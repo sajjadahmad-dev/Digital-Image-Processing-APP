@@ -6,57 +6,37 @@ import os
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas  # Ensure this import is on its own line
 
-# Custom CSS for simple and minimal colors
+# Custom CSS for a clean and modern UI
 st.markdown(
     """
     <style>
     .stApp {
-        background-color: #f8f9fa;  /* Light gray background */
+        background-color: #f5f5f5;
     }
     .stHeader {
-        color: #2c3e50;  /* Dark blue for headers */
+        color: #4A90E2;
         font-size: 28px;
         font-weight: bold;
-        text-align: center;
-        margin-bottom: 20px;
     }
     .stButton>button {
-        background-color: #3498db;  /* Blue for buttons */
+        background-color: #4A90E2;
         color: white;
-        border-radius: 8px;
+        border-radius: 5px;
         padding: 10px 24px;
         font-size: 16px;
-        border: none;
-        transition: 0.3s ease-in-out;
     }
     .stButton>button:hover {
-        background-color: #2980b9;  /* Darker blue on hover */
-        transform: scale(1.05);
+        background-color: #357ABD;
     }
     .stTextInput>div>div>input {
-        background-color: #ecf0f1;  /* Light gray for input fields */
-        color: #2c3e50;
-        border-radius: 5px;
-        border: 1px solid #bdc3c7;
-        padding: 8px;
+        background-color: #ffffff;
+        color: #000000;
     }
     .stCheckbox>label {
-        color: #2c3e50;  /* Dark blue for checkbox labels */
-        font-weight: bold;
+        color: #000000;
     }
     .stSlider>div>div>div>div {
-        background-color: #3498db;  /* Blue for slider */
-    }
-    .stSidebar {
-        background-color: #2c3e50;  /* Dark sidebar */
-        color: white;
-        padding: 20px;
-    }
-    .stSidebar .stButton>button {
-        background-color: #e74c3c;  /* Red for sidebar buttons */
-    }
-    .stSidebar .stButton>button:hover {
-        background-color: #c0392b;
+        background-color: #4A90E2;
     }
     </style>
     """,
