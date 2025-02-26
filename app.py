@@ -43,7 +43,7 @@ st.markdown(
 
 def main():
     st.title("Digital Image Processing System")
-    
+    st.caption("Developed by Sajjad and Anique")
     st.header("User Information")
     name = st.text_input("Enter your name")
     reg_no = st.text_input("Enter your registration number (Format: 2000-AG-1000)")
