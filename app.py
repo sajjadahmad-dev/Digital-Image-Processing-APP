@@ -4,46 +4,30 @@ from PIL import Image
 import io
 import tempfile
 import os
+from reportlab.lib.pagesizes import letter
+from reportlab.pdfgen import canvas
 
 def main():
-    st.markdown(
-        """
-        <style>
-            body {
-                background-color: #f0f2f6;
-            }
-            .stApp {
-                background: linear-gradient(to right, #6a11cb, #2575fc);
-                color: white;
-            }
-            .title {
-                text-align: center;
-                font-size: 32px;
-                font-weight: bold;
-                color: white;
-            }
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
+    st.title("Digital Image Processing System")
     
-    st.markdown("<h1 class='title'>Digital Image Processing System</h1>", unsafe_allow_html=True)
-    
-    st.sidebar.header("User Information")
-    name = st.sidebar.text_input("Enter your name")
-    reg_no = st.sidebar.text_input("Enter your registration number (Format: 2000-AG-1000)")
+    st.header("User Information")
+    name = st.text_input("Enter your name")
+    reg_no = st.text_input("Enter your registration number (Format: 2000-AG-1000)")
     
     is_valid_reg = False
     if reg_no:
         import re
-        pattern = r'^[0-9]{4}-[aA][gG]-[0-9]{4}$'
+        pattern = r'^\d{4}-[aA][gG]-\d{4}$'
         is_valid_reg = bool(re.match(pattern, reg_no))
         if not is_valid_reg:
-            st.sidebar.error("Please enter a valid registration number in the format 2000-AG-1000")
+            st.error("Please enter a valid registration number in the format 2000-AG-1000")
     
-    st.sidebar.header("Upload Images")
-    uploaded_file1 = st.sidebar.file_uploader("Choose first image", type=["jpg", "jpeg", "png"])
-    uploaded_file2 = st.sidebar.file_uploader("Choose second image", type=["jpg", "jpeg", "png"])
+    st.header("Upload Images")
+    col1, col2 = st.columns(2)
+    with col1:
+        uploaded_file1 = st.file_uploader("Choose first image...", type=["jpg", "jpeg", "png"])
+    with col2:
+        uploaded_file2 = st.file_uploader("Choose second image...", type=["jpg", "jpeg", "png"])
     
     if uploaded_file1 and uploaded_file2 and name and is_valid_reg:
         image1 = Image.open(uploaded_file1).convert('RGB')
@@ -52,16 +36,15 @@ def main():
         img_array1 = np.array(image1)
         img_array2 = np.array(image2)
         
-        st.subheader("Original Images")
+        st.header("Original Images")
         col1, col2 = st.columns(2)
         with col1:
             st.image(image1, caption="Image One", use_column_width=True)
         with col2:
             st.image(image2, caption="Image Two", use_column_width=True)
         
-        st.subheader("Image Operations")
+        st.header("Image Operations")
         select_all = st.checkbox("Select All Operations")
-        
         addition = st.checkbox("Addition", value=select_all)
         subtraction = st.checkbox("Subtraction", value=select_all)
         multiplication = st.checkbox("Multiplication", value=select_all)
@@ -118,8 +101,6 @@ def apply_operation_two_images(img_array1, img_array2, operation, weight=0.5):
     return result.astype(np.uint8)
 
 def create_two_image_pdf(name, reg_no, img_array1, img_array2, processed_images):
-    from reportlab.lib.pagesizes import letter
-    from reportlab.pdfgen import canvas
     temp_file = tempfile.NamedTemporaryFile(delete=False, suffix='.pdf')
     temp_file.close()
     pdf_path = temp_file.name
