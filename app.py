@@ -6,6 +6,40 @@ import os
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas  # Ensure this import is on its own line
 
+# Custom CSS for simple and minimal colors
+st.markdown(
+    """
+    <style>
+    .stApp {
+        background-color: #ffffff;  /* White background */
+    }
+    .stHeader {
+        color: #2c3e50;  /* Dark blue for headers */
+        font-size: 28px;
+        font-weight: bold;
+    }
+    .stButton>button {
+        background-color: #3498db;  /* Blue for buttons */
+        color: white;
+        border-radius: 5px;
+        padding: 10px 24px;
+        font-size: 16px;
+    }
+    .stButton>button:hover {
+        background-color: #2980b9;  /* Darker blue on hover */
+    }
+    .stTextInput>div>div>input {
+        background-color: #ecf0f1;  /* Light gray for input fields */
+        color: #2c3e50;
+    }
+    .stCheckbox>label {
+        color: #2c3e50;  /* Dark blue for checkbox labels */
+    }
+    .stSlider>div>div>div>div {
+        background-color: #3498db;  /* Blue for slider */
+    }
+    </style
+
 # Custom CSS for a clean and modern UI
 st.markdown(
     """
