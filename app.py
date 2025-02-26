@@ -4,7 +4,7 @@ from PIL import Image
 import tempfile
 import os
 from reportlab.lib.pagesizes import letter
-from reportlab.pdfgen import canvas  # Ensure this import is on its own line
+from reportlab.pdfgen import canvas
 
 # Custom CSS for simple and minimal colors
 st.markdown(
