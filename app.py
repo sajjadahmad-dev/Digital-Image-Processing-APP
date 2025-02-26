@@ -43,7 +43,7 @@ st.markdown(
 
 def main():
     st.title("Digital Image Processing System"
-            "developed by Sajjad & Anique")
+            developed by Sajjad & Anique)
     
     st.header("User Information")
     name = st.text_input("Enter your name")
