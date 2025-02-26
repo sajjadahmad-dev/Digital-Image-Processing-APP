@@ -5,14 +5,8 @@ import io
 import tempfile
 import os
 from reportlab.lib.pagesizes import letter
-from reportlab.pdfgen import canvasimport streamlit as st
-import numpy as np
-from PIL import Image
-import io
-import tempfile
-import os
-from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
+
 
 def main():
     st.title("Digital Image Processing System")
